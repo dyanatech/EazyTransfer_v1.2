@@ -1,0 +1,201 @@
+
+    <!-- App Header -->
+    <div class="appHeader no-border transparent position-absolute">
+        <div class="left">
+            <a (click)="gotologin()" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle"></div>
+        <div class="right">
+            <a (click)="gotologin()" class="headerButton">
+                Login
+            </a>
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        <div class="section mt-2 text-center">
+            <h1>Register now</h1>
+            <h4>Create an account</h4>
+        </div>
+        <div class="section mb-5 p-2">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                              <label class="label" for="first_name">First Name</label>
+                              <input type="text" class="form-control" id="first_name" placeholder="First Name" formControlName="firstName">
+                              <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                            </div>
+                            <div *ngIf="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.errors?.['required']" class="text-danger">
+                                First name is required.
+                              </div>
+                          </div>
+                          <!-- Last Name Field -->
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <label class="label" for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                            <!-- Error Message for Last Name -->
+                            <div *ngIf="registerForm.get('lastName')?.errors && (registerForm.get('lastName')?.touched || registerForm.get('lastName')?.dirty)" class="text-danger">
+                                <div *ngIf="registerForm.get('lastName')?.errors?.['required']">
+                                    Last Name is required.
+                                </div>
+                            </div>
+                        </div>
+ 
+                        <!-- CashTag Field -->
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <label class="label" for="cashTag">CashTag</label>
+                                <input type="text" class="form-control" id="cashTag" placeholder="CashTag" formControlName="cashTag">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                             <!-- Error Message for CashTag -->
+                             <div *ngIf="registerForm.get('cashTag')?.errors && (registerForm.get('cashTag')?.touched || registerForm.get('cashTag')?.dirty)" class="text-danger">
+                                <div *ngIf="registerForm.get('cashTag')?.errors?.['required']">
+                                    CashTag is required.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Email Field -->
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <label class="label" for="email">E-mail</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your e-mail" formControlName="email">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                             <!-- Error Message for Email -->
+                             <div *ngIf="registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.dirty)" class="text-danger">
+                                <div *ngIf="registerForm.get('email')?.errors?.['required']">
+                                    Email is required.
+                                </div>
+                                <div *ngIf="registerForm.get('email')?.errors?.['email']">
+                                    Please enter a valid email address.
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Password Field -->
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <label class="label" for="password">Password</label>
+                                <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Your password" formControlName="password">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                            <!-- Error Message for Password -->
+                            <div *ngIf="registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)" class="text-danger">
+                                <div *ngIf="registerForm.get('password')?.errors?.['required']">
+                                    Password is required.
+                                </div>
+                                <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+                                    Password must be at least 8 characters long.
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Password Again Field -->
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <label class="label" for="confirmPassword">Password Again</label>
+                                <input type="password" class="form-control" id="confirmPassword" autocomplete="off" placeholder="Type password again" formControlName="confirmPassword">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                            <!-- Error Message for Password Confirmation -->
+                            <div *ngIf="registerForm.get('confirmPassword')?.errors && (registerForm.get('confirmPassword')?.touched || registerForm.get('confirmPassword')?.dirty)" class="text-danger">
+                                <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">
+                                    Confirming password is required.
+                                </div>
+                                <!-- <div *ngIf="registerForm.errors?.['mustMatch']">
+                                    Passwords must match.
+                                </div> -->
+                            </div>
+                        </div>
+                        
+            
+                        <!-- Terms and Conditions Checkbox -->
+                        <div class="custom-control custom-checkbox mt-2 mb-1">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="agreeTerms" formControlName="agreeTerms">
+                                <label class="form-check-label" for="agreeTerms">
+                                    I agree <a style="color: blue;" data-bs-toggle="modal" data-bs-target="#termsModal">terms and
+                                        conditions</a>
+                                </label>
+                            </div>
+                            <!-- Error Message for Terms and Conditions -->
+                            <div *ngIf="registerForm.get('agreeTerms')?.errors && (registerForm.get('agreeTerms')?.touched || registerForm.get('agreeTerms')?.dirty)" class="text-danger">
+                                <div *ngIf="registerForm.get('agreeTerms')?.errors?.['required']">
+                                    You must agree to the terms and conditions.
+                                </div>
+                            </div>
+                        </div>
+            
+                    </div>
+                </div>
+            
+                <div class="form-button-group transparent">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" [disabled]="!registerForm.valid">Register</button>
+                </div>
+            </form>
+            
+        </div>
+
+    </div>
+    <!-- * App Capsule -->
+
+
+    <!-- Terms Modal -->
+    <div class="modal fade modalbox" id="termsModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Terms and Conditions</h5>
+                    <a href="#" data-bs-dismiss="modal">Close</a>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fermentum, urna eget finibus
+                        fermentum, velit metus maximus erat, nec sodales elit justo vitae sapien. Sed fermentum
+                        varius erat, et dictum lorem. Cras pulvinar vestibulum purus sed hendrerit. Praesent et
+                        auctor dolor. Ut sed ultrices justo. Fusce tortor erat, scelerisque sit amet diam rhoncus,
+                        cursus dictum lorem. Ut vitae arcu egestas, congue nulla at, gravida purus.
+                    </p>
+                    <p>
+                        Donec in justo urna. Fusce pretium quam sed viverra blandit. Vivamus a facilisis lectus.
+                        Nunc non aliquet nulla. Aenean arcu metus, dictum tincidunt lacinia quis, efficitur vitae
+                        dui. Integer id nisi sit amet leo rutrum placerat in ac tortor. Duis sed fermentum mi, ut
+                        vulputate ligula.
+                    </p>
+                    <p>
+                        Vivamus eget sodales elit, cursus scelerisque leo. Suspendisse lorem leo, sollicitudin
+                        egestas interdum sit amet, sollicitudin tristique ex. Class aptent taciti sociosqu ad litora
+                        torquent per conubia nostra, per inceptos himenaeos. Phasellus id ultricies eros. Praesent
+                        vulputate interdum dapibus. Duis varius faucibus metus, eget sagittis purus consectetur in.
+                        Praesent fringilla tristique sapien, et maximus tellus dapibus a. Quisque nec magna dapibus
+                        sapien iaculis consectetur. Fusce in vehicula arcu. Aliquam erat volutpat. Class aptent
+                        taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * Terms Modal -->

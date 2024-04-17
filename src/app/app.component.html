@@ -1,0 +1,6 @@
+ <!-- loader -->
+ <div style="z-index: 999999;" id="loader" *ngIf="_authService.loading$ | async">
+    <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+</div>
+<!-- * loader -->
+<router-outlet />
